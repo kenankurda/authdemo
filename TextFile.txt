@@ -1,0 +1,15 @@
+﻿First step-
+Change Connection string of this app to point to the db of the App that was newly created 
+
+Adapt the changes in the newly created app in Startup.cs and add folliwing to the newly created app just after the DbContext
+
+ services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+                in newly created app add folowing to be tested on controller level or Action Level:
+
+                 [Authorize(Roles = "PowerUser")] 
+                 [Authorize(Roles = "Administrator")]
+
